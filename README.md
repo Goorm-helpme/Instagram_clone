@@ -1,7 +1,7 @@
 ## 🔍 프로젝트 개요
 - **개발 목적:** 구름 풀스택 과제 - 인스타그램 클론코딩
-- **개발 기간:** `2023.08.02` ~ `2023.08.08`
-- **최종 배포:** `2023.08.08`
+- **개발 기간:** `2023.08.02` ~ `2023.08.XX`
+- **최종 배포:** `2023.08.XX`
 
 <br />
 
@@ -25,8 +25,10 @@
 
 
 ### Back-End
-<img src="https://img.shields.io/badge/java 17-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/spring 3.1.0-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> <img src="https://img.shields.io/badge/thymeleaf-005F0F?style=for-the-badge&logo=thymeleaf&logoColor=white">
+<img src="https://img.shields.io/badge/java 17-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/spring 3.1.0-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
 
+### DataBase
+나중에 추가
 
 ### Collaboration
 <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white"> <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white"> <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=Slack&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
@@ -41,21 +43,17 @@
 ## ✨ 주요 기능
 - **댓글 CRUD:** 누구나 `생성, 수정, 삭제` 가능, 누구나 `읽기` 가능
 - **대댓글 CRUD:** 누구나 `생성, 수정, 삭제` 가능, 누구나 `읽기` 가능
-- **동영상 R:** 유튜브 api를 활용한 영상 데이터 가져오기
+- **피드 CRUD:** API 호출을 통해 게시글 `조회, 수정, 삭제, 생성`이 가능
 - **좋아요:** `좋아요` 버튼 클릭시 해당 영상에 대한 좋아요 클릭 갯수 표시
 
 <br />
 
 ## 📁 아키텍쳐
-resource <br />
-├─static - 정적 파일을 저장합니다 <br />
-│&nbsp;&nbsp;├─css : CSS파일은 이쪽 <br />
-│&nbsp;&nbsp;├─images : 이미지 파일은 이쪽 <br />
-│&nbsp;&nbsp;├─js : 자바스크립트 파일은 이쪽 <br />
-│&nbsp;&nbsp;└─video : 비디오 파일은 이쪽 <br />
-└─templates - 동적 페이지를 저장합니다 <br />
-&nbsp;&nbsp;&nbsp;&nbsp;├─layout : Head, footer를 정의해두었습니다. 자세한 내용은 주석 참조 <br />
-&nbsp;&nbsp;&nbsp;&nbsp;└─Page : 각 기능에 대한 페이지를 넣어두었습니다.
+├─Controller : API Controller를 모와둔 곳<br/>
+│&nbsp;  └─Dto : API를 통해 받아올 데이터 모델<br/>
+├─Domain : DB에 저장될 실제 데이터 모델<br/> 
+├─Repository : DB와의 연동을 담당<br/>
+└─Service : 요청 로직을 처리<br/>
 
 <br />
 
@@ -73,9 +71,11 @@ resource <br />
 
 
 ## 주의 사항
-- 절대로 API키를 깃허브에 커밋하지 마세요.! 도용시 문제가 발생할 수 있습니다.
 - 커밋시 각자 브랜치를 사용해서 커밋해주시면 감사하겠습니다.
-- HTML, CSS, JS는 main/resource/static 아래 각각의 폴더에 넣어주세요
-- 추가한 CSS는 template/layout/head.html에 주석 보시고 추가해주세요
-- 추가한 JS는 template/layout/footer.html에 넣거나 다른 페이지에서 사용되지 않는 경우에만 html 아래에 추가해주세요
-- 추가적으로 궁금한 사항은 슬랙이나 디스코드, Github의 Discuss를 확인해주세요
+- 추가적으로 궁금한 사항은 슬랙이나 디스코드, Github의 Discussion를 확인해주세요
+
+## 안내 사항
+- 개발 단계에서는 실제 DB를 사용하지 않고, H2 인메모리를 이용해서 개발할 예정이고, 추후 MariaDB로 전환할 예정입니다.
+- "https://docs.google.com/spreadsheets/d/1Gul1K1z4v76O_FINn6OUCSnvi_lO3gDUlwEpUvqFsbs/edit?usp=drive_link"
+- 위의 링크에서 호출할 API URL의 명세와 엔티티에 대한 간단한 명세를 작성해주세요.
+- 
