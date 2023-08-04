@@ -23,7 +23,6 @@ class PeedServiceTest {
     private PeedService peedService;
 
     @Test
-    @Commit
     void uploadPeed() {
         PeedDTO peedDTO = PeedDTO.builder()
                 .userName("hello")
@@ -72,7 +71,7 @@ class PeedServiceTest {
         peedService.deletePeed(peedId);
 
         List<PeedDTO> allPeed = peedService.findAllPeed();
-        assertThat(allPeed).hasSize(2);
+        assertThat(allPeed).hasSize(1);
     }
 
 //    @Test
