@@ -26,13 +26,13 @@ public class PeedService {
     }
 
     public Long uploadPeed(PeedDTO peedDTO) {
-        peedRepository.save(peedDTO.toEntity());
-        return peedDTO.getId();
+        Peed save = peedRepository.save(peedDTO.toEntity());
+        return save.getId();
     }
 
-    public PeedDTO modifyPeed(PeedDTO peed) {
+    public PeedDTO modifyPeed(Long id, PeedDTO peed) {
         PeedDTO fixedPeed = PeedDTO.builder()
-                .id(peed.getId())
+                .id(id)
                 .userName(peed.getUserName())
                 .content(peed.getContent())
                 .build();
@@ -41,7 +41,7 @@ public class PeedService {
         return fixedPeed;
     }
 
-    public void deletePeed (Long id){
+    public void deletePeed(Long id){
         peedRepository.deleteById(id);
     }
 
@@ -49,7 +49,6 @@ public class PeedService {
         Peed peed = peedRepository.findById(id).orElseThrow();
 
         return PeedDTO.builder()
-                .id(peed.getId())
                 .userName(peed.getUserName())
                 .content(peed.getContent())
                 .build();

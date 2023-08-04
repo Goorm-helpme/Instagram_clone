@@ -1,6 +1,7 @@
 package helpme.Instagram.controller.peed;
 
 import helpme.Instagram.domain.Peed;
+import helpme.Instagram.dto.PeedDTO;
 import helpme.Instagram.service.peed.PeedService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ public class PeedController {
     private final PeedService peedService;
 
     @GetMapping("/")
-    public List<Peed> main(){
+    public List<PeedDTO> main(){
         return peedService.findAllPeed();
     }
 }

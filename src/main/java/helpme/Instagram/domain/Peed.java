@@ -14,8 +14,10 @@ public class Peed {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "USERNAME")
     private String userName;
 
+    @Column(name = "CONTENT")
     private String content;
 
     @OneToMany(mappedBy = "peed")
