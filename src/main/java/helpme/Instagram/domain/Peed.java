@@ -1,4 +1,4 @@
-package helpme.Instagram.domain;
+package helpme.Instagram.Domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -21,4 +21,7 @@ public class Peed {
 
     @OneToMany(mappedBy = "peed")
     private List<Comment> comments = new ArrayList<>();
+
+    @OneToOne
+    private Heart heart;
 }

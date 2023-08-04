@@ -1,14 +1,12 @@
 package helpme.Instagram.Repository;
 
 import helpme.Instagram.Domain.Board;
-import helpme.Instagram.Domain.Heart;
-import helpme.Instagram.Domain.Peed;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
+/**
+ * 테스트용으로 구현하였지만, 구조가 크게 다르지 않아서 참고하시면 됩니다
+ */
 @Repository
-public interface HeartRepository extends JpaRepository<Heart, Long> {
-    Heart findByPeed(Peed peed);
+public interface BoardRepository extends JpaRepository<Board, Long> {
 }

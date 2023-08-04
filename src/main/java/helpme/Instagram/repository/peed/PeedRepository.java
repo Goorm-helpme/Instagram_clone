@@ -1,6 +1,6 @@
-package helpme.Instagram.repository.peed;
+package helpme.Instagram.Repository.peed;
 
-import helpme.Instagram.domain.Peed;
+import helpme.Instagram.Domain.Peed;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

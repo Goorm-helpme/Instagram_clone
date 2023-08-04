@@ -1,7 +1,7 @@
-package helpme.Instagram.service.peed;
+package helpme.Instagram.Service.peed;
 
-import helpme.Instagram.domain.Peed;
-import helpme.Instagram.repository.peed.PeedRepository;
+import helpme.Instagram.Domain.Peed;
+import helpme.Instagram.Repository.peed.PeedRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,5 +25,9 @@ public class PeedService {
         findPeed.get().setContent(peed.getContent());
     }
 
-
+    public Peed findById(Long id) {
+        return peedRepository.findById(id).orElseThrow(() ->
+                new RuntimeException("데이터가 업습니다")
+        );
+    }
 }
