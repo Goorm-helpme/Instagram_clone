@@ -30,5 +30,4 @@ public class PeedService {
                 new RuntimeException("데이터가 업습니다")
         );
     }
-
 }
