@@ -12,38 +12,21 @@ public class Heart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int liked;
-    private boolean isLiked;
-
     private int dislike;
-    private boolean isDisLiked;
 
-    @ManyToOne
-    Board board;
+    @OneToOne
+    Peed peed;
 
     public Heart() {
         this.liked = 0;
-        this.isLiked = false;
         this.dislike = 0;
-        this.isDisLiked = false;
     }
 
     public void checkLike() {
-        if(!isLiked) {
-            liked+= 1;
-            isLiked = true;
-        } else {
-            liked-= 1;
-            isLiked = false;
-        }
+        liked = liked+1;
     }
 
     public void checkDisLike() {
-        if(!isDisLiked) {
-            dislike+= 1;
-            isDisLiked = true;
-        } else {
-            dislike-= 1;
-            isDisLiked = false;
-        }
+        dislike = dislike+1;
     }
 }

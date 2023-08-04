@@ -2,16 +2,17 @@ package helpme.Instagram.Service.Heart;
 
 import helpme.Instagram.Domain.Board;
 import helpme.Instagram.Domain.Heart;
-import lombok.RequiredArgsConstructor;
+import helpme.Instagram.Domain.Peed;
 
 import java.util.List;
 
 public interface HeartService {
     void save(Heart heart);
     Heart findById(Long id);
-    List<Heart> findByBoard(Board board);
+    Heart findByBoard(Peed peed);
     void delete(Long id);
 
-    void clickLike(Long id);
-    void clickDisLike(Long id);
+    void clickLike(Long boardId);
+    void clickDisLike(Long boardId);
+    List<Heart> findAll();
 }
