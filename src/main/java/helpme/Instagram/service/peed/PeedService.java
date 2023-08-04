@@ -1,29 +1,62 @@
 package helpme.Instagram.service.peed;
 
 import helpme.Instagram.domain.Peed;
-import helpme.Instagram.repository.peed.PeedRepository;
+import helpme.Instagram.dto.PeedDTO;
+import helpme.Instagram.repository.peed.JpaPeedRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
 public class PeedService {
 
-    private final PeedRepository peedRepository;
+    private final JpaPeedRepository peedRepository;
 
-    public void uploadPeed(Peed peed){
-        peedRepository.save(peed);
+    private PeedDTO toDTO(Peed peed){
+        return PeedDTO.builder()
+                .id(peed.getId())
+                .userName(peed.getUserName())
+                .content(peed.getContent())
+                .build();
     }
 
-    public void modifyPeed(Long id, Peed peed){
-        Optional<Peed> findPeed = peedRepository.findById(id);
-        findPeed.get().setUserName(peed.getUserName());
-        findPeed.get().setContent(peed.getContent());
+    public Long uploadPeed(PeedDTO peedDTO) {
+        peedRepository.save(peedDTO.toEntity());
+        return peedDTO.getId();
     }
 
+    public PeedDTO modifyPeed(PeedDTO peed) {
+        PeedDTO fixedPeed = PeedDTO.builder()
+                .id(peed.getId())
+                .userName(peed.getUserName())
+                .content(peed.getContent())
+                .build();
 
+        peedRepository.save(fixedPeed.toEntity());
+        return fixedPeed;
+    }
+
+    public void deletePeed (Long id){
+        peedRepository.deleteById(id);
+    }
+
+    public PeedDTO findOnePeed(Long id){
+        Peed peed = peedRepository.findById(id).orElseThrow();
+
+        return PeedDTO.builder()
+                .id(peed.getId())
+                .userName(peed.getUserName())
+                .content(peed.getContent())
+                .build();
+    }
+
+    public List<PeedDTO> findAllPeed(){
+        List<Peed> peedList = peedRepository.findAll();
+        return peedList.stream().map(this::toDTO).collect(Collectors.toList());
+    }
 }
