@@ -23,12 +23,19 @@ class PeedServiceTest {
     private PeedService peedService;
 
     @Test
+    @Commit
     void uploadPeed() {
         PeedDTO peedDTO = PeedDTO.builder()
                 .userName("hello")
                 .content("hi")
                 .build();
         Long id = peedService.uploadPeed(peedDTO);
+
+        PeedDTO peedDTO2 = PeedDTO.builder()
+                .userName("hello")
+                .content("hi")
+                .build();
+        peedService.uploadPeed(peedDTO2);
 
         PeedDTO result = peedService.findOnePeed(id);
 
@@ -74,30 +81,33 @@ class PeedServiceTest {
         assertThat(allPeed).hasSize(1);
     }
 
-//    @Test
-//    void findOnePeed() {
-//        Peed peed = new Peed();
-//        peed.setUserName("hello");
-//        peed.setContent("hi");
-//        Long peedId = peedService.uploadPeed(peed);
-//
-//        Peed findPeed = peedService.findOnePeed(peedId);
-//
-//        assertThat(findPeed.getId()).isEqualTo(peedId);
-//    }
-//
-//    @Test
-//    void findAllPeed() {
-//        Peed peed = new Peed();
-//        peed.setUserName("hello");
-//        peed.setContent("hi");
-//        Peed peed2 = new Peed();
-//        peed2.setUserName("hello2");
-//        peed2.setContent("hi2");
-//        peedService.uploadPeed(peed);
-//        peedService.uploadPeed(peed2);
-//
-//        List<Peed> allPeed = peedService.findAllPeed();
-//        assertThat(allPeed).hasSize(2);
-//    }
+    @Test
+    void findOnePeed() {
+        PeedDTO peedDTO = PeedDTO.builder()
+                .userName("hello")
+                .content("hi")
+                .build();
+        Long peedId = peedService.uploadPeed(peedDTO);
+
+        PeedDTO result = peedService.findOnePeed(peedId);
+
+        assertThat(result.getId()).isEqualTo(peedId);
+    }
+
+    @Test
+    void findAllPeed() {
+        PeedDTO peedDTO = PeedDTO.builder()
+                .userName("hello")
+                .content("hi")
+                .build();
+        PeedDTO peedDTO2 = PeedDTO.builder()
+                .userName("hello")
+                .content("hi")
+                .build();
+        peedService.uploadPeed(peedDTO);
+        peedService.uploadPeed(peedDTO2);
+
+        List<PeedDTO> allPeed = peedService.findAllPeed();
+        assertThat(allPeed).hasSize(2);
+    }
 }

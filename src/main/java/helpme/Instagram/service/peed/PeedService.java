@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,6 +24,7 @@ public class PeedService {
                 .id(peed.getId())
                 .userName(peed.getUserName())
                 .content(peed.getContent())
+                .commentList(peed.getComments())
                 .build();
     }
 
@@ -35,6 +38,7 @@ public class PeedService {
                 .id(id)
                 .userName(peed.getUserName())
                 .content(peed.getContent())
+                .commentList(peed.getCommentList())
                 .build();
 
         peedRepository.save(fixedPeed.toEntity());
@@ -49,13 +53,15 @@ public class PeedService {
         Peed peed = peedRepository.findById(id).orElseThrow();
 
         return PeedDTO.builder()
+                .id(peed.getId())
                 .userName(peed.getUserName())
                 .content(peed.getContent())
+                .commentList(peed.getComments())
                 .build();
     }
 
     public List<PeedDTO> findAllPeed(){
         List<Peed> peedList = peedRepository.findAll();
-        return peedList.stream().map(this::toDTO).collect(Collectors.toList());
+        return peedList.stream().map(this::toDTO).toList();
     }
 }
