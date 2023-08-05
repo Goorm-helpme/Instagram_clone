@@ -1,6 +1,5 @@
 package helpme.Instagram.domain;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;

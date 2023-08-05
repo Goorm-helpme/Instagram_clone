@@ -2,18 +2,14 @@ package helpme.Instagram.service.peed;
 
 import helpme.Instagram.domain.Peed;
 import helpme.Instagram.dto.PeedDTO;
-import jakarta.persistence.Column;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
@@ -23,7 +19,6 @@ class PeedServiceTest {
     private PeedService peedService;
 
     @Test
-    @Commit
     void uploadPeed() {
         PeedDTO peedDTO = PeedDTO.builder()
                 .userName("hello")
