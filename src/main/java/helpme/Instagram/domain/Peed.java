@@ -1,5 +1,6 @@
 package helpme.Instagram.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,7 +18,7 @@ public class Peed {
     @Column(name = "USERNAME")
     private String userName;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Image image;
 
     @Column(name = "CONTENT")

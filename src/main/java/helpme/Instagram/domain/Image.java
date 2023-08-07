@@ -1,5 +1,6 @@
 package helpme.Instagram.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -23,7 +24,7 @@ public class Image {
     @Column(nullable = false)
     private String filePath;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Peed peed;
 
     @Builder

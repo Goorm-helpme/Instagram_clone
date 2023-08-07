@@ -1,6 +1,7 @@
 package helpme.Instagram.service.peed;
 
 import helpme.Instagram.domain.Peed;
+import helpme.Instagram.dto.ImageDTO;
 import helpme.Instagram.dto.PeedDTO;
 import helpme.Instagram.repository.peed.JpaPeedRepository;
 import lombok.RequiredArgsConstructor;
@@ -31,13 +32,35 @@ public class PeedService {
         return save.getId();
     }
 
-    public PeedDTO modifyPeed(Long id, PeedDTO peed) {
+    public Long uploadPeed(PeedDTO peedDTO, ImageDTO imageDTO){
+        Peed peed = Peed.builder()
+                .userName(peedDTO.getUserName())
+                .image(imageDTO.toEntity())
+                .content(peedDTO.getContent())
+                .build();
+        return peedRepository.save(peed).getId();
+    }
+
+    public PeedDTO modifyPeed(Long id, PeedDTO peedDTO) {
         PeedDTO fixedPeed = PeedDTO.builder()
                 .id(id)
-                .userName(peed.getUserName())
-                .content(peed.getContent())
-                .image(peed.getImage())
-                .commentList(peed.getCommentList())
+                .userName(peedDTO.getUserName())
+                .content(peedDTO.getContent())
+                .image(peedDTO.getImage())
+                .commentList(peedDTO.getCommentList())
+                .build();
+
+        peedRepository.save(fixedPeed.toEntity());
+        return fixedPeed;
+    }
+
+    public PeedDTO modifyPeed(Long id, PeedDTO peedDTO, ImageDTO imageDTO){
+        PeedDTO fixedPeed = PeedDTO.builder()
+                .id(id)
+                .userName(peedDTO.getUserName())
+                .content(peedDTO.getContent())
+                .image(imageDTO.toEntity())
+                .commentList(peedDTO.getCommentList())
                 .build();
 
         peedRepository.save(fixedPeed.toEntity());
