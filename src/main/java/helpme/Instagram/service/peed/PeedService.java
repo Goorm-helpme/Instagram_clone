@@ -20,6 +20,7 @@ public class PeedService {
         return PeedDTO.builder()
                 .id(peed.getId())
                 .userName(peed.getUserName())
+                .image(peed.getImage())
                 .content(peed.getContent())
                 .commentList(peed.getComments())
                 .build();
@@ -35,6 +36,7 @@ public class PeedService {
                 .id(id)
                 .userName(peed.getUserName())
                 .content(peed.getContent())
+                .image(peed.getImage())
                 .commentList(peed.getCommentList())
                 .build();
 
@@ -52,6 +54,7 @@ public class PeedService {
         return PeedDTO.builder()
                 .id(peed.getId())
                 .userName(peed.getUserName())
+                .image(peed.getImage())
                 .content(peed.getContent())
                 .commentList(peed.getComments())
                 .build();

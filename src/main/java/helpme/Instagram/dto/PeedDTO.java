@@ -1,6 +1,7 @@
 package helpme.Instagram.dto;
 
 import helpme.Instagram.domain.Comment;
+import helpme.Instagram.domain.Image;
 import helpme.Instagram.domain.Peed;
 import lombok.Builder;
 import lombok.Data;
@@ -14,13 +15,15 @@ public class PeedDTO {
 
     private Long id;
     private String userName;
+    private Image image;
     private String content;
     private List<Comment> commentList;
 
     @Builder
-    public PeedDTO(Long id, String userName, String content, List<Comment> commentList) {
+    public PeedDTO(Long id, String userName, Image image, String content, List<Comment> commentList) {
         this.id = id;
         this.userName = userName;
+        this.image = image;
         this.content = content;
         this.commentList = commentList;
     }
@@ -29,6 +32,7 @@ public class PeedDTO {
         return Peed.builder()
                 .id(id)
                 .userName(userName)
+                .image(image)
                 .content(content)
                 .comments(commentList)
                 .build();

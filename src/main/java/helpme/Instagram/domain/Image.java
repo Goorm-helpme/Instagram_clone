@@ -18,12 +18,20 @@ public class Image {
     private String originFileName;
 
     @Column(nullable = false)
-    private String fullPath;
+    private String fileName;
+
+    @Column(nullable = false)
+    private String filePath;
+
+    @OneToOne
+    private Peed peed;
 
     @Builder
-    public Image(Long id, String originFileName, String fullPath) {
+    public Image(Long id, String originFileName, String fileName, String filePath, Peed peed) {
         this.id = id;
         this.originFileName = originFileName;
-        this.fullPath = fullPath;
+        this.fileName = fileName;
+        this.filePath = filePath;
+        this.peed = peed;
     }
 }

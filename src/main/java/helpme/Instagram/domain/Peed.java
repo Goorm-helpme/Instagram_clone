@@ -17,6 +17,9 @@ public class Peed {
     @Column(name = "USERNAME")
     private String userName;
 
+    @OneToOne
+    private Image image;
+
     @Column(name = "CONTENT")
     private String content;
 
@@ -24,9 +27,10 @@ public class Peed {
     private List<Comment> comments = new ArrayList<>();
 
     @Builder
-    public Peed(Long id, String userName, String content, List<Comment> comments) {
+    public Peed(Long id, String userName, Image image, String content, List<Comment> comments) {
         this.id = id;
         this.userName = userName;
+        this.image = image;
         this.content = content;
         this.comments = comments;
     }
