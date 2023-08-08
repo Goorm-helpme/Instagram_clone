@@ -5,10 +5,13 @@ import helpme.Instagram.dto.ImageDTO;
 import helpme.Instagram.dto.PeedDTO;
 import helpme.Instagram.repository.peed.JpaPeedRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -82,6 +85,11 @@ public class PeedService {
                 .commentList(peed.getComments())
                 .build();
     }
+
+//    public List<PeedDTO> findAllPeed(){
+//        List<Peed> allPeed = peedRepository.findAllPeed();
+//        return allPeed.stream().map(this::toDTO).toList();
+//    }
 
     public List<PeedDTO> findAllPeed(){
         List<Peed> peedList = peedRepository.findAll();

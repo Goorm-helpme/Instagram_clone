@@ -3,6 +3,7 @@ package helpme.Instagram.controller.peed;
 import helpme.Instagram.domain.Image;
 import helpme.Instagram.dto.ImageDTO;
 import helpme.Instagram.dto.PeedDTO;
+import helpme.Instagram.repository.peed.JpaPeedRepository;
 import helpme.Instagram.service.image.ImageService;
 import helpme.Instagram.service.peed.PeedService;
 import jakarta.annotation.Nullable;

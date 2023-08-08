@@ -24,15 +24,11 @@ public class Image {
     @Column(nullable = false)
     private String filePath;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Peed peed;
-
     @Builder
-    public Image(Long id, String originFileName, String fileName, String filePath, Peed peed) {
+    public Image(Long id, String originFileName, String fileName, String filePath) {
         this.id = id;
         this.originFileName = originFileName;
         this.fileName = fileName;
         this.filePath = filePath;
-        this.peed = peed;
     }
 }

@@ -1,5 +1,6 @@
 package helpme.Instagram.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import helpme.Instagram.domain.Image;
 import helpme.Instagram.domain.Peed;
 import lombok.Builder;
@@ -14,15 +15,13 @@ public class ImageDTO {
     private String originFileName;
     private String fileName;
     private String filePath;
-    private Peed peed;
 
     @Builder
-    public ImageDTO(Long id, String originFileName, String fileName, String filePath, Peed peed) {
+    public ImageDTO(Long id, String originFileName, String fileName, String filePath) {
         this.id = id;
         this.originFileName = originFileName;
         this.fileName = fileName;
         this.filePath = filePath;
-        this.peed = peed;
     }
 
     public Image toEntity(){
@@ -31,7 +30,6 @@ public class ImageDTO {
                 .originFileName(this.getOriginFileName())
                 .fileName(this.getFileName())
                 .filePath(this.getFilePath())
-                .peed(this.getPeed())
                 .build();
     }
 }

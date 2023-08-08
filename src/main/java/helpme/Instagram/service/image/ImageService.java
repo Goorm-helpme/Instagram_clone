@@ -28,7 +28,6 @@ public class ImageService {
                 .originFileName(image.getOriginFileName())
                 .fileName(image.getFileName())
                 .filePath(image.getFilePath())
-                .peed(image.getPeed())
                 .build();
     }
 
@@ -36,27 +35,20 @@ public class ImageService {
         return jpaImageRepository.save(imageDTO.toEntity()).getId();
     }
 
-    // 수정 시 피드와의 연관관계가 모두 사라지는 오류 수정 필요
     public ImageDTO modifyImage(PeedDTO peedDTO, MultipartFile img) throws IOException {
-        Image image = peedDTO.getImage();
-
-        ImageDTO build;
-        if(image != null) {
+        if(peedDTO.getImage() != null) {
+            Image image = peedDTO.getImage();
             Long imageId = image.getId();
             ImageDTO imageDTO = findOneImage(imageId);
-            deleteImage(imageId);
             ImageDTO fixedImage = convertToImageDTO(img);
-            build = ImageDTO.builder()
+            deleteImage(imageId);
+            return ImageDTO.builder()
                     .id(imageDTO.getId())
-                    .peed(imageDTO.getPeed())
                     .originFileName(fixedImage.getOriginFileName())
                     .fileName(fixedImage.getFileName())
                     .filePath(fixedImage.getFilePath())
                     .build();
-        }else build = convertToImageDTO(img);
-
-        jpaImageRepository.save(build.toEntity());
-        return build;
+        }else return convertToImageDTO(img);
     }
 
     public void deleteImage(Long id){

@@ -1,6 +1,7 @@
 package helpme.Instagram.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import helpme.Instagram.domain.Comment;
 import helpme.Instagram.domain.Image;
 import helpme.Instagram.domain.Peed;
@@ -16,10 +17,7 @@ public class PeedDTO {
 
     private Long id;
     private String userName;
-
-    @JsonIgnore
     private Image image;
-
     private String content;
     private List<Comment> commentList;
 
