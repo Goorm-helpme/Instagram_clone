@@ -1,11 +1,14 @@
 package helpme.Instagram.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+/**
+ * 데이터베이스에 저장되는 엔티티
+ */
 
 @Entity
 @Getter
@@ -16,13 +19,13 @@ public class Image {
     private Long id;
 
     @Column(nullable = false)
-    private String originFileName;
+    private String originFileName; // 원래 파일명
 
     @Column(nullable = false)
-    private String fileName;
+    private String fileName; // 서버에서 관리할 파일명
 
     @Column(nullable = false)
-    private String filePath;
+    private String filePath; // 파일 저장 경로
 
     @Builder
     public Image(Long id, String originFileName, String fileName, String filePath) {

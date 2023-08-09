@@ -1,9 +1,7 @@
 package helpme.Instagram.service.image;
 
 import helpme.Instagram.domain.Image;
-import helpme.Instagram.domain.Peed;
 import helpme.Instagram.dto.ImageDTO;
-import helpme.Instagram.dto.PeedDTO;
 import helpme.Instagram.repository.image.JpaImageRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,6 +20,7 @@ public class ImageService {
 
     private final JpaImageRepository jpaImageRepository;
 
+    // 뷰로 넘겨줄 때 DTO로 변환
     private ImageDTO toDTO(Image image) {
         return ImageDTO.builder()
                 .id(image.getId())
@@ -31,30 +30,22 @@ public class ImageService {
                 .build();
     }
 
+    // 이미지 데이터를 DB에 저장
     public Long saveImage(ImageDTO imageDTO) {
         return jpaImageRepository.save(imageDTO.toEntity()).getId();
     }
 
-    public ImageDTO modifyImage(PeedDTO peedDTO, MultipartFile img) throws IOException {
-        if(peedDTO.getImage() != null) {
-            Image image = peedDTO.getImage();
-            Long imageId = image.getId();
-            ImageDTO imageDTO = findOneImage(imageId);
-            ImageDTO fixedImage = convertToImageDTO(img);
-            deleteImage(imageId);
-            return ImageDTO.builder()
-                    .id(imageDTO.getId())
-                    .originFileName(fixedImage.getOriginFileName())
-                    .fileName(fixedImage.getFileName())
-                    .filePath(fixedImage.getFilePath())
-                    .build();
-        }else return convertToImageDTO(img);
+    // 이미지 데이터 수정
+    public ImageDTO modifyImage(MultipartFile img) throws IOException {
+        return convertToImageDTO(img);
     }
 
+    // 이미지 데이터 삭제
     public void deleteImage(Long id){
         jpaImageRepository.deleteById(id);
     }
 
+    // 해당 id의 이미지 데이터 조회
     public ImageDTO findOneImage(Long id){
         Image image = jpaImageRepository.findById(id).orElseThrow();
         return ImageDTO.builder()
@@ -65,6 +56,7 @@ public class ImageService {
                 .build();
     }
 
+    // MultipartFile타입의 데이터를 ImageDTO로 변환
     public ImageDTO convertToImageDTO(MultipartFile img) throws IOException {
         LocalDateTime now = LocalDateTime.now();
         int year = now.getYear();
