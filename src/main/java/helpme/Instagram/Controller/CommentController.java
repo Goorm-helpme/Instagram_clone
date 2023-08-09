@@ -20,7 +20,7 @@ public class CommentController {
     private final CommentService commentService;
     private final PeedService peedService;
 
-    // 댓글 작성
+    // 댓글 생성
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/comments/comment")
     public ResponseDto<String> writeComment(@PathVariable("boardId") Long boardId, @RequestBody CommentDto commentDto) {
@@ -29,7 +29,7 @@ public class CommentController {
     }
 
 
-    // 게시글에 달린 댓글 모두 불러오기
+    // 전체 댓글 조회
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/comments")
     public ResponseEntity<List<CommentDto>> getComments(@PathVariable("boardId") Long boardId) {
@@ -39,7 +39,7 @@ public class CommentController {
     }
 
 
-    // 댓글 삭제
+    // 특정 댓글 삭제
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/comments/comment/{Id}")
     public ResponseDto<String>  deleteComment(@PathVariable("boardId") Integer boardId, @PathVariable("commentId") Integer commentId) {
