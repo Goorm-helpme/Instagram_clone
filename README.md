@@ -13,7 +13,7 @@
 | [@WhiteKIM](https://github.com/WhiteKIM) | [@JahyunChoi](https://github.com/JahyunChoi) | [@JinhwanB](https://github.com/JinhwanB) | [@K-Jae-min](https://github.com/K-Jae-min) | [@PerfectlyElastic](https://github.com/PerfectlyElastic) |
 | 조원 | 조원 | 조장 | 조원 | 조원 |
 | 백엔드 개발자 | 풀스택 개발자 | 백엔드 개발자 | 풀스택 개발자 | 백엔드 개발자 |
-| 대댓글 구현 | 피드 구현 | 댓글 구현 | 게시글 수정, 삭제 구현 | 좋아요 기능 구현 |
+| 좋아요 구현 | 프론트 구현 | 피드 구현 | 댓글 구현 | 대댓글 구현 |
 
 <br />
 
