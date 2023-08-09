@@ -20,13 +20,13 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final PeedRepository peedRepository;
 
-    // 댓글 작성하기
+    // 댓글 생성
     @Transactional
     public CommentDto writeComment(Long peedId, CommentDto commentDto) {
         Comment comment = new Comment();
         comment.setContent(commentDto.getContent());
 
-        // 게시판 번호로 게시글 찾기
+        // 피드 찾기
         Peed peed = peedRepository.findById(peedId).orElseThrow(() -> {
             return new IllegalArgumentException("게시판을 찾을 수 없습니다.");
         });
@@ -39,7 +39,7 @@ public class CommentService {
 
 
 
-    // 글에 해당하는 전체 댓글 불러오기
+    // 전체 댓글 조회
     public List<CommentDto> getComments(Peed peed) {
         List<Comment> comments = commentRepository.findAllByPeed(peed);
         List<CommentDto> commentDtos = new ArrayList<>();
@@ -49,7 +49,7 @@ public class CommentService {
     }
 
 
-    // 댓글 삭제하기
+    // 특정 댓글 삭제
     @Transactional
     public String deleteComment(int commentId) {
         Comment comment = commentRepository.findById(commentId).orElseThrow(()-> {
