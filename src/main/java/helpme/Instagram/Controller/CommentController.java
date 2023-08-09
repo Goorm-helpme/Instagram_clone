@@ -22,7 +22,7 @@ public class CommentController {
 
     // 댓글 작성
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/comments/{boardId}")
+    @PostMapping("/comments/comment")
     public ResponseDto<String> writeComment(@PathVariable("boardId") Long boardId, @RequestBody CommentDto commentDto) {
         commentService.writeComment(boardId, commentDto);
         return new ResponseDto<String>(HttpStatus.OK.value(), "댓글 작성을 완료했습니다.");
@@ -31,7 +31,7 @@ public class CommentController {
 
     // 게시글에 달린 댓글 모두 불러오기
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/comments/{boardId}")
+    @GetMapping("/comments")
     public ResponseEntity<List<CommentDto>> getComments(@PathVariable("boardId") Long boardId) {
         Peed peed = peedService.findById(boardId);
         List<CommentDto> findComment = commentService.getComments(peed);
@@ -41,7 +41,7 @@ public class CommentController {
 
     // 댓글 삭제
     @ResponseStatus(HttpStatus.OK)
-    @DeleteMapping("/comments/{boardId}/{commentId}")
+    @DeleteMapping("/comments/comment/{Id}")
     public ResponseDto<String>  deleteComment(@PathVariable("boardId") Integer boardId, @PathVariable("commentId") Integer commentId) {
         commentService.deleteComment(commentId);
         return new ResponseDto<String>(HttpStatus.OK.value(), "댓글 삭제 완료");
