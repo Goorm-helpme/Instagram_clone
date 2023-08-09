@@ -56,6 +56,16 @@ public class CommentService {
         return commentDto;
     }
 
+    //특정 댓글 수정
+    @Transactional
+    public CommentDto modifyComment(int id,CommentDto commentDto) {
+        Comment comment = commentRepository.findById(id).orElseThrow(() -> {
+            return new IllegalArgumentException("Board Id를 찾을 수 없습니다!");
+        });
+        comment.setContent(commentDto.getContent());
+        return CommentDto.toDto(comment);
+    }
+
     // 특정 댓글 삭제
     @Transactional
     public String deleteComment(int commentId) {
