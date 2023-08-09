@@ -44,6 +44,13 @@ public class CommentController {
         return ResponseEntity.ok(commentService.getComment(id));
     }
 
+    //특정 댓글 수정
+    @PutMapping("/comments/comment/{id}")
+    public ResponseDto<String> modifyComment(@PathVariable("Id") int Id, @RequestBody CommentDto commentDto) {
+        commentService.modifyComment(Id, commentDto);
+        return new ResponseDto<String>(HttpStatus.OK.value(), "댓글 수정을 완료했습니다.");
+    }
+
     // 특정 댓글 삭제
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/comments/comment/{Id}")
