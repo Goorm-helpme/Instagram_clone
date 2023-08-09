@@ -29,39 +29,20 @@ public class HeartServiceImpl implements HeartService{
     }
 
     @Override
-    public Heart findByBoard(Peed peed) {
-        return heartRepository.findByPeed(peed);
-    }
-
-    @Override
     public void delete(Long id) {
         heartRepository.deleteById(id);
     }
 
     @Override
     public void clickLike(Long boardId) {
-        if(heartRepository.findByPeed(peedService.findById(boardId))!=null) {
-            Heart heart = heartRepository.findByPeed(peedService.findById(boardId));
-            heart.checkLike();
-        } else {
-            Heart heart = new Heart();
-            heart.setPeed(peedService.findById(boardId));
-            heartRepository.save(heart);
-            heart.checkLike();
-        }
+        Peed peed = peedService.findById(boardId);
+        peed.getHeart().checkLike();
     }
 
     @Override
     public void clickDisLike(Long boardId) {
-        if(heartRepository.findByPeed(peedService.findById(boardId))!=null) {
-            Heart heart = heartRepository.findByPeed(peedService.findById(boardId));
-            heart.checkDisLike();
-        } else {
-            Heart heart = new Heart();
-            heart.setPeed(peedService.findById(boardId));
-            heartRepository.save(heart);
-            heart.checkDisLike();
-        }
+        Peed peed = peedService.findById(boardId);
+        peed.getHeart().checkDisLike();
     }
 
     @Override

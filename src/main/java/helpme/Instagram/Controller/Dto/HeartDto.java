@@ -14,6 +14,5 @@ public class HeartDto {
         this.id = heart.getId();
         this.like = heart.getLiked();
         this.dislike = heart.getDislike();
-        this.boardId = heart.getPeed().getId();
     }
 }

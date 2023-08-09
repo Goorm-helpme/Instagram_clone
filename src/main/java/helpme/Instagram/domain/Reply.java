@@ -1,6 +1,5 @@
 package helpme.Instagram.Domain;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 
