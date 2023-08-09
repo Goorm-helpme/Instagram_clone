@@ -38,7 +38,6 @@ public class CommentService {
     }
 
 
-
     // 전체 댓글 조회
     public List<CommentDto> getComments(Peed peed) {
         List<Comment> comments = commentRepository.findAllByPeed(peed);
@@ -48,6 +47,14 @@ public class CommentService {
         return commentDtos;
     }
 
+    // 특정 댓글 조회
+    public  CommentDto getComment(int id){
+        Comment comment = commentRepository.findById(id).orElseThrow(()-> {
+            return new IllegalArgumentException("댓글 Id를 찾을 수 없습니다.");
+        });
+        CommentDto commentDto = CommentDto.toDto(comment);
+        return commentDto;
+    }
 
     // 특정 댓글 삭제
     @Transactional
