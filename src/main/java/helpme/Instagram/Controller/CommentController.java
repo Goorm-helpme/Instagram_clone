@@ -38,6 +38,11 @@ public class CommentController {
         return ResponseEntity.ok(findComment);
     }
 
+     //특정 댓글 조회
+    @GetMapping("/comments/comment/{id}")
+    public ResponseEntity<CommentDto> getComment(@PathVariable("id") int id){
+        return ResponseEntity.ok(commentService.getComment(id));
+    }
 
     // 특정 댓글 삭제
     @ResponseStatus(HttpStatus.OK)
