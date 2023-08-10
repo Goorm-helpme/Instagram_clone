@@ -14,9 +14,6 @@ public class Heart {
     private int liked;
     private int dislike;
 
-    @OneToOne
-    Peed peed;
-
     public Heart() {
         this.liked = 0;
         this.dislike = 0;

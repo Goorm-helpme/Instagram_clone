@@ -10,5 +10,5 @@ import java.util.List;
 
 @Repository
 public interface HeartRepository extends JpaRepository<Heart, Long> {
-    Heart findByPeed(Peed peed);
+
 }

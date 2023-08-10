@@ -22,8 +22,8 @@ public class CommentController {
 
     // 댓글 생성
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/comments/comment")
-    public ResponseDto<String> writeComment(@PathVariable("boardId") Long boardId, @RequestBody CommentDto commentDto) {
+    @PostMapping("/comments/comment/{id}")
+    public ResponseDto<String> writeComment(@PathVariable("id") Long boardId, @RequestBody CommentDto commentDto) {
         commentService.writeComment(boardId, commentDto);
         return new ResponseDto<String>(HttpStatus.OK.value(), "댓글 작성을 완료했습니다.");
     }
@@ -31,8 +31,8 @@ public class CommentController {
 
     // 전체 댓글 조회
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/comments")
-    public ResponseEntity<List<CommentDto>> getComments(@PathVariable("boardId") Long boardId) {
+    @GetMapping("/comments/{id}")
+    public ResponseEntity<List<CommentDto>> getComments(@PathVariable("id") Long boardId) {
         Peed peed = peedService.findById(boardId);
         List<CommentDto> findComment = commentService.getComments(peed);
         return ResponseEntity.ok(findComment);
@@ -46,15 +46,15 @@ public class CommentController {
 
     //특정 댓글 수정
     @PutMapping("/comments/comment/{id}")
-    public ResponseDto<String> modifyComment(@PathVariable("Id") int Id, @RequestBody CommentDto commentDto) {
+    public ResponseDto<String> modifyComment(@PathVariable("id") int Id, @RequestBody CommentDto commentDto) {
         commentService.modifyComment(Id, commentDto);
         return new ResponseDto<String>(HttpStatus.OK.value(), "댓글 수정을 완료했습니다.");
     }
 
     // 특정 댓글 삭제
     @ResponseStatus(HttpStatus.OK)
-    @DeleteMapping("/comments/comment/{Id}")
-    public ResponseDto<String>  deleteComment(@PathVariable("boardId") Integer boardId, @PathVariable("commentId") Integer commentId) {
+    @DeleteMapping("/comments/comment/{id}")
+    public ResponseDto<String>  deleteComment(@PathVariable("id") Integer boardId, @PathVariable("commentId") Integer commentId) {
         commentService.deleteComment(commentId);
         return new ResponseDto<String>(HttpStatus.OK.value(), "댓글 삭제 완료");
     }

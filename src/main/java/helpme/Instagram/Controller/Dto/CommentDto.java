@@ -9,7 +9,7 @@ import helpme.Instagram.Domain.Comment;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CommentDto {
-    private int id;
+    private Long id;
     private String content;
 
     public static CommentDto toDto(Comment comment) {
