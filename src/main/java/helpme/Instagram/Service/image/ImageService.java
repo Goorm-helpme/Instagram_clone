@@ -1,8 +1,8 @@
-package helpme.Instagram.service.image;
+package helpme.Instagram.Service.image;
 
-import helpme.Instagram.domain.Image;
-import helpme.Instagram.dto.ImageDTO;
-import helpme.Instagram.repository.image.JpaImageRepository;
+import helpme.Instagram.Domain.Image;
+import helpme.Instagram.Controller.Dto.ImageDTO;
+import helpme.Instagram.Repository.image.JpaImageRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

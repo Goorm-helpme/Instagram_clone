@@ -1,9 +1,9 @@
-package helpme.Instagram.controller.peed;
+package helpme.Instagram.Controller.peed;
 
 import helpme.Instagram.dto.ImageDTO;
 import helpme.Instagram.dto.PeedDTO;
-import helpme.Instagram.service.image.ImageService;
-import helpme.Instagram.service.peed.PeedService;
+import helpme.Instagram.Service.image.ImageService;
+import helpme.Instagram.Service.peed.PeedService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
