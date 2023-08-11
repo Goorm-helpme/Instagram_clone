@@ -12,7 +12,7 @@ import java.util.List;
 public interface JpaPeedRepository extends JpaRepository<Peed, Long> {
 
     // 피드 한개 조회시 연관관계인 이미지 데이터, 좋아요 함께 조회
-    @Query("select p from Peed p" + " left join fetch p.image" + " where p.id = :id")
+    @Query("select p from Peed p" + " left join fetch p.image left join fetch p.heart" + " where p.id = :id")
     Peed findOnePeed(@Param("id") Long id);
 
     // 전체 피드 조회시 연관관계인 이미지 데이터 함께 조회

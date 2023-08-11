@@ -1,6 +1,7 @@
-package helpme.Instagram.dto;
+package helpme.Instagram.Controller.Dto;
 
 import helpme.Instagram.Domain.Comment;
+import helpme.Instagram.Domain.Heart;
 import helpme.Instagram.Domain.Image;
 import helpme.Instagram.Domain.Peed;
 import lombok.Builder;
@@ -22,14 +23,16 @@ public class PeedDTO {
     private Image image; // 피드에 적용된 이미지 정보
     private String content; // 피드 내용
     private List<Comment> commentList; // 댓글
+    private Heart heart; // 좋아요
 
     @Builder
-    public PeedDTO(Long id, String userName, Image image, String content, List<Comment> commentList) {
+    public PeedDTO(Long id, String userName, Image image, String content, List<Comment> commentList, Heart heart) {
         this.id = id;
         this.userName = userName;
         this.image = image;
         this.content = content;
         this.commentList = commentList;
+        this.heart = heart;
     }
 
     /**

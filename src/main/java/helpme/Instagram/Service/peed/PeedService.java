@@ -1,7 +1,7 @@
 package helpme.Instagram.Service.peed;
 
-import helpme.Instagram.dto.ImageDTO;
-import helpme.Instagram.dto.PeedDTO;
+import helpme.Instagram.Controller.Dto.ImageDTO;
+import helpme.Instagram.Controller.Dto.PeedDTO;
 import helpme.Instagram.Domain.Peed;
 import helpme.Instagram.Repository.peed.JpaPeedRepository;
 import lombok.RequiredArgsConstructor;

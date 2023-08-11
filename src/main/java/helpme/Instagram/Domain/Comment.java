@@ -1,4 +1,4 @@
-package helpme.Instagram.domain;
+package helpme.Instagram.Domain;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

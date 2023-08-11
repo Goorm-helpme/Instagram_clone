@@ -1,4 +1,4 @@
-package helpme.Instagram.dto;
+package helpme.Instagram.Controller.Dto;
 
 import helpme.Instagram.Domain.Image;
 import lombok.Builder;
