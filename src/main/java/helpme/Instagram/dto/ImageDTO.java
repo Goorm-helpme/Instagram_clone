@@ -1,6 +1,6 @@
 package helpme.Instagram.dto;
 
-import helpme.Instagram.Domain.Image;
+import helpme.Instagram.domain.Image;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;

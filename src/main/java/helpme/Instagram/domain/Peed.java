@@ -1,4 +1,4 @@
-package helpme.Instagram.Domain;
+package helpme.Instagram.domain;
 
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -21,16 +21,13 @@ public class Peed {
     private String userName; // 피드 작성자
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    private helpme.Instagram.Domain.Image image; // 피드에 들어간 이미지 정보
+    private helpme.Instagram.domain.Image image; // 피드에 들어간 이미지 정보
 
     @Column(nullable = false)
     private String content; // 피드 내용
 
     @OneToMany(mappedBy = "peed", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>(); // 피드 댓글 내용
-
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    private Heart heart;
 
     @Builder
     public Peed(Long id, String userName, Image image, String content, List<Comment> comments) {
@@ -41,6 +38,5 @@ public class Peed {
         this.image = image;
         this.content = content;
         this.comments = comments;
-        this.heart = new Heart();
     }
 }

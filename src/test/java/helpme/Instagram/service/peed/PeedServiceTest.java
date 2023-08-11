@@ -1,6 +1,6 @@
-package helpme.Instagram.Service.peed;
+package helpme.Instagram.service.peed;
 
-import helpme.Instagram.Domain.Peed;
+import helpme.Instagram.domain.Peed;
 import helpme.Instagram.dto.PeedDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,9 @@
-package helpme.Instagram.Service.peed;
+package helpme.Instagram.service.peed;
 
 import helpme.Instagram.dto.ImageDTO;
 import helpme.Instagram.dto.PeedDTO;
-import helpme.Instagram.Domain.Peed;
-import helpme.Instagram.Repository.peed.JpaPeedRepository;
+import helpme.Instagram.domain.Peed;
+import helpme.Instagram.repository.peed.JpaPeedRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -87,14 +87,12 @@ public class PeedService {
                     .image(peed.getImage())
                     .content(peed.getContent())
                     .commentList(peed.getComments())
-                    .heart(peed.getHeart())
                     .build();
         }else return PeedDTO.builder()
                 .id(peed.getId())
                 .userName(peed.getUserName())
                 .content(peed.getContent())
                 .commentList(peed.getComments())
-                .heart(peed.getHeart())
                 .build();
     }
 

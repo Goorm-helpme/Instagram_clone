@@ -1,8 +1,8 @@
 package helpme.Instagram.dto;
 
-import helpme.Instagram.Domain.Comment;
-import helpme.Instagram.Domain.Image;
-import helpme.Instagram.Domain.Peed;
+import helpme.Instagram.domain.Comment;
+import helpme.Instagram.domain.Image;
+import helpme.Instagram.domain.Peed;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
