@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.util.Assert;
 
 /**
  * 데이터베이스에 저장되는 엔티티
@@ -29,6 +30,9 @@ public class Image {
 
     @Builder
     public Image(Long id, String originFileName, String fileName, String filePath) {
+        Assert.hasText(originFileName, "originFileName을 입력해주세요");
+        Assert.hasText(fileName, "fileName을 입력해주세요");
+        Assert.hasText(filePath, "filePath를 입력해주세요");
         this.id = id;
         this.originFileName = originFileName;
         this.fileName = fileName;

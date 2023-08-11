@@ -1,18 +1,17 @@
 package helpme.Instagram.domain;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 데이터베이스에 저장되는 엔티티
- */
-
 @Entity
-@Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Data
+@NoArgsConstructor
 public class Peed {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,11 +26,13 @@ public class Peed {
     @Column(nullable = false)
     private String content; // 피드 내용
 
-    @OneToMany(mappedBy = "peed")
+    @OneToMany(mappedBy = "peed", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>(); // 피드 댓글 내용
 
     @Builder
     public Peed(Long id, String userName, Image image, String content, List<Comment> comments) {
+        Assert.hasText(userName, "닉네임은 필수");
+        Assert.hasText(content, "내용은 필수");
         this.id = id;
         this.userName = userName;
         this.image = image;

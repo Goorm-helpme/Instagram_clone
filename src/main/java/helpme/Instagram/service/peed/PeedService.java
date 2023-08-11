@@ -1,8 +1,8 @@
 package helpme.Instagram.service.peed;
 
-import helpme.Instagram.domain.Peed;
 import helpme.Instagram.dto.ImageDTO;
 import helpme.Instagram.dto.PeedDTO;
+import helpme.Instagram.domain.Peed;
 import helpme.Instagram.repository.peed.JpaPeedRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -100,5 +100,9 @@ public class PeedService {
     public List<PeedDTO> findAllPeed(){
         List<Peed> allPeed = peedRepository.findAllPeed();
         return allPeed.stream().map(this::toDTO).toList();
+    }
+
+    public Peed findById(Long boardId) {
+        return peedRepository.findById(boardId).orElseThrow();
     }
 }
