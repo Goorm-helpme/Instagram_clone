@@ -1,7 +1,7 @@
 package helpme.Instagram.Service.image;
 
-import helpme.Instagram.Domain.Image;
 import helpme.Instagram.Controller.Dto.ImageDTO;
+import helpme.Instagram.Domain.Image;
 import helpme.Instagram.Repository.image.JpaImageRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

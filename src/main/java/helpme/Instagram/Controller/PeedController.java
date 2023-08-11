@@ -2,6 +2,10 @@ package helpme.Instagram.Controller;
 
 import helpme.Instagram.Controller.Dto.ImageDTO;
 import helpme.Instagram.Controller.Dto.PeedDTO;
+import helpme.Instagram.Domain.Peed;
+import helpme.Instagram.Repository.QueryDsl.PeedRepositoryCustom;
+import helpme.Instagram.Repository.peed.JpaPeedRepository;
+import helpme.Instagram.Repository.peed.PeedRepository;
 import helpme.Instagram.Service.image.ImageService;
 import helpme.Instagram.Service.peed.PeedService;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +23,7 @@ public class PeedController {
 
     private final PeedService peedService;
     private final ImageService imageService;
+    private final JpaPeedRepository peedRepository;
 
     // 전체 피드 조회(/peeds)
     @GetMapping("")
@@ -62,5 +67,10 @@ public class PeedController {
     public ResponseEntity delete(@PathVariable Long id){
         peedService.deletePeed(id);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/peed/query/{id}")
+    public ResponseEntity<List<Peed>> findOnPeed_Query(@PathVariable Long id){
+        return ResponseEntity.ok(peedRepository.findById_Query(id));
     }
 }

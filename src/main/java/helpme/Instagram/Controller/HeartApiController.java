@@ -1,12 +1,15 @@
 package helpme.Instagram.Controller;
 
 import helpme.Instagram.Controller.Dto.HeartDto;
+import helpme.Instagram.Domain.Board;
 import helpme.Instagram.Domain.Heart;
+import helpme.Instagram.Service.Board.BoardService;
 import helpme.Instagram.Service.Heart.HeartServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -14,6 +17,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/heart")
 public class HeartApiController {
     private final HeartServiceImpl heartService;
+    private final BoardService boardService;
 
     @GetMapping("/{id}")
     public HeartDto getHeart(@PathVariable Long id) {

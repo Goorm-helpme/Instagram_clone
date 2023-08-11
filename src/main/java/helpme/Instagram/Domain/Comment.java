@@ -1,7 +1,10 @@
 package helpme.Instagram.Domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +23,7 @@ public class Comment {
     private String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PEED_ID")
+    @JoinColumn(name = "peedid")
     private Peed peed;
 
     @OneToMany(mappedBy = "comment")

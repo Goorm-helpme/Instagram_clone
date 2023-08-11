@@ -1,5 +1,8 @@
 package helpme.Instagram.Domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -7,10 +10,12 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name = "peed")
 public class Peed {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +30,8 @@ public class Peed {
     @Column(nullable = false)
     private String content; // 피드 내용
 
-    @OneToMany(mappedBy = "peed")
+    @OneToMany(mappedBy = "peed", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties({"peed"})
     private List<Comment> comments = new ArrayList<>(); // 피드 댓글 내용
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
