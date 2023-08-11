@@ -21,7 +21,7 @@ public class Peed {
     private String userName; // 피드 작성자
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    private helpme.Instagram.domain.Image image; // 피드에 들어간 이미지 정보
+    private Image image; // 피드에 들어간 이미지 정보
 
     @Column(nullable = false)
     private String content; // 피드 내용
