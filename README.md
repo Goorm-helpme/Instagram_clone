@@ -66,12 +66,8 @@
 
 ## 👩🏻‍💻👨🏻‍💻 작업 기록
 - `2023.08.02` - 김경규 : Heart 관련 기능 틀만 구현하였음
-<<<<<<< Updated upstream
-- `2023.08.03` - 김경규 : Heart API 기능 구현 완료, API 호출 테스트 완료
-=======
 - `2023.08.04` - 김경규 : Heart API 기능 구현 완료, API 호출 테스트 완료
 - `2023.08.11` - 김경규 : Querydsl 적용 - 중복 조회 해결
->>>>>>> Stashed changes
 <br />
 
 
@@ -83,4 +79,3 @@
 - 개발 단계에서는 실제 DB를 사용하지 않고, H2 인메모리를 이용해서 개발할 예정이고, 추후 MariaDB로 전환할 예정입니다.
 - "https://docs.google.com/spreadsheets/d/1Gul1K1z4v76O_FINn6OUCSnvi_lO3gDUlwEpUvqFsbs/edit?usp=drive_link"
 - 위의 링크에서 호출할 API URL의 명세와 엔티티에 대한 간단한 명세를 작성해주세요.
-- 
