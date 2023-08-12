@@ -1,5 +1,6 @@
 package helpme.Instagram.Controller;
 
+import helpme.Instagram.Controller.Dto.ReplyDto;
 import helpme.Instagram.Domain.Reply;
 import helpme.Instagram.Service.Reply.ReplyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +15,24 @@ public class ReplyApiController {
     @Autowired
     private ReplyService replyService;
 
-    @PostMapping("/{parentId}")
-    public Reply createReply(@PathVariable Long parentId, @RequestBody Map<String, String> requestBody) {
-        String content = requestBody.get("content");
-        return replyService.createReply(content, parentId);
+    @PostMapping
+    public Reply createReply(@RequestBody ReplyDto replyDto) {
+        return replyService.createReply(replyDto);
     }
 
     @GetMapping("/{parentId}")
-    public List<Reply> getReplies(@PathVariable Long parentId) {
+    public List<Reply> getReplies(@PathVariable int parentId) {
         return replyService.getReplies(parentId);
+    }
+
+    @PutMapping("/{replyId}")
+    public Reply updateReply(@PathVariable Long replyId, @RequestBody Map<String, String> requestBody) {
+        String content = requestBody.get("content");
+        return replyService.updateReply(replyId, content);
+    }
+
+    @DeleteMapping("/{replyId}")
+    public void deleteReply(@PathVariable Long replyId) {
+        replyService.deleteReply(replyId);
     }
 }
