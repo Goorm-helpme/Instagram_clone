@@ -25,8 +25,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'com.h2database:h2'
-	implementation 'com.h2database:h2'//테스트 용도입니다. 추후 mariadb로 전환 예정
+//	runtimeOnly 'com.h2database:h2'
+//	implementation 'com.h2database:h2'//테스트 용도입니다. 추후 mariadb로 전환 예정
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'//테스트용도 입니다. 추후 mariadb로 전환 예정
 
 	// querydsl 이놈
@@ -34,7 +34,7 @@ dependencies {
 	annotationProcessor "com.querydsl:querydsl-apt:5.0.0:jakarta"
 	annotationProcessor "jakarta.annotation:jakarta.annotation-api"
 	annotationProcessor "jakarta.persistence:jakarta.persistence-api"
-	//runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'

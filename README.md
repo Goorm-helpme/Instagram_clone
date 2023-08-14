@@ -1,7 +1,7 @@
 ## 🔍 프로젝트 개요
 - **개발 목적:** 구름 풀스택 과제 - 인스타그램 클론코딩
-- **개발 기간:** `2023.08.02` ~ `2023.08.XX`
-- **최종 배포:** `2023.08.XX`
+- **개발 기간:** `2023.08.02` ~ `2023.08.1X`
+- **최종 배포:** `2023.08.14` - 완료
 
 <br />
 
@@ -28,7 +28,7 @@
 <img src="https://img.shields.io/badge/java 17-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/spring 3.1.0-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
 
 ### DataBase
-나중에 추가
+![Static Badge](https://img.shields.io/badge/MariaDB-003545?logo=mariadb&label=mariadb)
 
 ### Collaboration
 <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white"> <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white"> <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=Slack&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
@@ -69,6 +69,7 @@
 - `2023.08.04` - 김경규 : Heart API 기능 구현 완료, API 호출 테스트 완료
 - `2023.08.11` - 김경규 : Querydsl 적용 - 중복 조회 해결
 - `2023.08.13` - 김경규 : Querydsl 대댓글 적용 완료
+- `2023.08.14` - 김경규 : 배포 완료 - 구글 클라우드
 <br />
 
 
