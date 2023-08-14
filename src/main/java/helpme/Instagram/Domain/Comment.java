@@ -14,6 +14,7 @@ import java.util.List;
 public class Comment {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "comment_id")
     private Long id;
 
     @Column(name = "USERNAME")
@@ -26,6 +27,7 @@ public class Comment {
     @JoinColumn(name = "peedid")
     private Peed peed;
 
-    @OneToMany(mappedBy = "comment")
+    @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties({"comment"})
     private List<Reply> replies = new ArrayList<>();
 }

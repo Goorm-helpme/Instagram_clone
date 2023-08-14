@@ -48,7 +48,7 @@ public class CommentService {
     }
 
     // 특정 댓글 조회
-    public  CommentDto getComment(int id){
+    public  CommentDto getComment(Long id){
         Comment comment = commentRepository.findById(id).orElseThrow(()-> {
             return new IllegalArgumentException("댓글 Id를 찾을 수 없습니다.");
         });
@@ -58,7 +58,7 @@ public class CommentService {
 
     //특정 댓글 수정
     @Transactional
-    public CommentDto modifyComment(int id,CommentDto commentDto) {
+    public CommentDto modifyComment(Long id,CommentDto commentDto) {
         Comment comment = commentRepository.findById(id).orElseThrow(() -> {
             return new IllegalArgumentException("Board Id를 찾을 수 없습니다!");
         });
@@ -68,7 +68,7 @@ public class CommentService {
 
     // 특정 댓글 삭제
     @Transactional
-    public String deleteComment(int commentId) {
+    public String deleteComment(Long commentId) {
         Comment comment = commentRepository.findById(commentId).orElseThrow(()-> {
             return new IllegalArgumentException("댓글 Id를 찾을 수 없습니다.");
         });

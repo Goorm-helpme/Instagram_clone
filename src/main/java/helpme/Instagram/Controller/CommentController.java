@@ -40,13 +40,13 @@ public class CommentController {
 
      //특정 댓글 조회
     @GetMapping("/comments/comment/{id}")
-    public ResponseEntity<CommentDto> getComment(@PathVariable("id") int id){
+    public ResponseEntity<CommentDto> getComment(@PathVariable("id") Long id){
         return ResponseEntity.ok(commentService.getComment(id));
     }
 
     //특정 댓글 수정
     @PutMapping("/comments/comment/{id}")
-    public ResponseDto<String> modifyComment(@PathVariable("id") int Id, @RequestBody CommentDto commentDto) {
+    public ResponseDto<String> modifyComment(@PathVariable("id") Long Id, @RequestBody CommentDto commentDto) {
         commentService.modifyComment(Id, commentDto);
         return new ResponseDto<String>(HttpStatus.OK.value(), "댓글 수정을 완료했습니다.");
     }
@@ -54,7 +54,7 @@ public class CommentController {
     // 특정 댓글 삭제
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/comments/comment/{id}")
-    public ResponseDto<String>  deleteComment(@PathVariable("id") Integer boardId, @PathVariable("commentId") Integer commentId) {
+    public ResponseDto<String>  deleteComment(@PathVariable("id") Long commentId) {
         commentService.deleteComment(commentId);
         return new ResponseDto<String>(HttpStatus.OK.value(), "댓글 삭제 완료");
     }

@@ -18,6 +18,6 @@ public class Reply {
     private String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "COMMENT_ID")
+    @JoinColumn(name = "comment_id")
     private Comment comment;
 }

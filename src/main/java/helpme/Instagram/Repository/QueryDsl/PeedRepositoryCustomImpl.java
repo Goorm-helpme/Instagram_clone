@@ -24,9 +24,9 @@ public class PeedRepositoryCustomImpl extends QuerydslRepositorySupport implemen
         QReply reply = QReply.reply;
         QHeart heart = QHeart.heart;
         return from(qPeed)
-                .leftJoin(qPeed.comments, comment)
                 .join(qPeed.heart, heart).fetchJoin()
                 .leftJoin(qPeed.image, image).fetchJoin()
+                .leftJoin(qPeed.comments, comment).fetchJoin()
                 .leftJoin(comment.replies, reply)
                 .where(qPeed.id.eq(id))
                 .distinct()

@@ -6,6 +6,6 @@ import helpme.Instagram.Domain.Comment;
 
 import java.util.List;
 
-public interface CommentRepository extends JpaRepository<Comment, Integer> {
+public interface CommentRepository extends JpaRepository<Comment, Long> {
     List<Comment> findAllByPeed(Peed peed);
 }
