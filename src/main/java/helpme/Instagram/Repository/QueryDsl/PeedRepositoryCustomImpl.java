@@ -32,4 +32,20 @@ public class PeedRepositoryCustomImpl extends QuerydslRepositorySupport implemen
                 .distinct()
                 .fetch();
     }
+
+    @Override
+    public List<Peed> findAll_Query() {
+        QPeed qPeed = QPeed.peed;
+        QComment comment = QComment.comment;
+        QImage image = QImage.image;
+        QReply reply = QReply.reply;
+        QHeart heart = QHeart.heart;
+        return from(qPeed)
+                .join(qPeed.heart, heart).fetchJoin()
+                .leftJoin(qPeed.image, image).fetchJoin()
+                .leftJoin(qPeed.comments, comment).fetchJoin()
+                .leftJoin(comment.replies, reply)
+                .distinct()
+                .fetch();
+    }
 }

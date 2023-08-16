@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface PeedRepositoryCustom {
     List<Peed> findById_Query(Long id);
+    List<Peed> findAll_Query();
 }

@@ -27,9 +27,8 @@ public class PeedController {
 
     // 전체 피드 조회(/peeds)
     @GetMapping("")
-    public ResponseEntity<List<PeedDTO>> allPeeds(){
-        List<PeedDTO> allPeed = peedService.findAllPeed();
-        return ResponseEntity.ok(allPeed);
+    public ResponseEntity<List<Peed>> allPeeds(){
+        return ResponseEntity.ok(peedRepository.findAll_Query());
     }
 
     // 피드 생성(/peeds/peed)
