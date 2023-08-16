@@ -28,7 +28,7 @@ public class CommentService {
 
         // 피드 찾기
         Peed peed = peedRepository.findById(peedId).orElseThrow(() -> {
-            return new IllegalArgumentException("게시판을 찾을 수 없습니다.");
+            return new IllegalArgumentException("피드를 찾을 수 없습니다.");
         });
 
         comment.setPeed(peed);
@@ -60,7 +60,7 @@ public class CommentService {
     @Transactional
     public CommentDto modifyComment(Long id,CommentDto commentDto) {
         Comment comment = commentRepository.findById(id).orElseThrow(() -> {
-            return new IllegalArgumentException("Board Id를 찾을 수 없습니다!");
+            return new IllegalArgumentException("댓글 Id를 찾을 수 없습니다!");
         });
         comment.setContent(commentDto.getContent());
         return CommentDto.toDto(comment);
