@@ -25,7 +25,7 @@ public class HeartServiceImpl implements HeartService{
 
     @Override
     public Heart findById(Long id) {
-        return heartRepository.findById(id).orElseThrow();
+        return heartRepository.findById(id).orElseThrow(); //TODO: exception 변환
     }
 
     @Override
@@ -35,12 +35,14 @@ public class HeartServiceImpl implements HeartService{
 
     @Override
     public void clickLike(Long boardId) {
+        //TODO: DB row lock 고려 필요, 무한대로 좋아요 가능?
         Peed peed = peedService.findById(boardId);
         peed.getHeart().checkLike();
     }
 
     @Override
     public void clickDisLike(Long boardId) {
+        //TODO: DB row lock 고려 필요
         Peed peed = peedService.findById(boardId);
         peed.getHeart().checkDisLike();
     }

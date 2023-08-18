@@ -17,7 +17,7 @@ public class HeartApiController {
 
     @GetMapping("/{id}")
     public HeartDto getHeart(@PathVariable Long id) {
-        Heart heart = heartService.findById(id);
+        Heart heart = heartService.findById(id); //TODO: entity 가 controller 까지 나오는게 좀.. 이상함.
         HeartDto heartDto = new HeartDto(heart);
         return heartDto;
     }

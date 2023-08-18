@@ -36,8 +36,12 @@ public class PeedController {
     public ResponseEntity upload(@RequestPart PeedDTO peedDTO, @RequestParam MultipartFile img) throws IOException {
         if(!img.isEmpty()){
             ImageDTO imageDTO = imageService.convertToImageDTO(img);
+
+            //TODO: methode 분리 할 필요가 없음
             peedService.uploadPeed(peedDTO, imageDTO);
-        }else peedService.uploadPeed(peedDTO);
+        } else {
+            peedService.uploadPeed(peedDTO, null); //TODO: brace else 에 추가
+        }
         return ResponseEntity.ok().build();
     }
 
@@ -52,11 +56,12 @@ public class PeedController {
     @PutMapping("/peed/{id}")
     public ResponseEntity<PeedDTO> modify(@PathVariable Long id, @RequestPart PeedDTO peedDTO, @RequestParam MultipartFile img) throws IOException {
         if(!img.isEmpty()){
-            ImageDTO imageDTO = imageService.modifyImage(img);
+            ImageDTO imageDTO = imageService.convertToImageDTO(img); //TODO: method name
             peedService.modifyPeed(id, peedDTO, imageDTO);
         }else {
             peedService.modifyPeed(id, peedDTO);
         }
+        //TODO: 새로 조회하는 이유는??
         PeedDTO result = peedService.findOnePeed(id);
         return ResponseEntity.ok(result);
     }
@@ -64,6 +69,7 @@ public class PeedController {
     // 해당 id의 피드 삭제(/peeds/peed/{id})
     @DeleteMapping("/peed/{id}")
     public ResponseEntity delete(@PathVariable Long id){
+        //TODO: hard delete 가 아니라 soft delete 도 고려 해볼 것.
         peedService.deletePeed(id);
         return ResponseEntity.ok().build();
     }

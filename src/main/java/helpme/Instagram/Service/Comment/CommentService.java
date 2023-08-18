@@ -11,6 +11,7 @@ import helpme.Instagram.Repository.CommentRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -31,7 +32,7 @@ public class CommentService {
             return new IllegalArgumentException("피드를 찾을 수 없습니다.");
         });
 
-        comment.setPeed(peed);
+        comment.setPeed(peed); //TODO: peed.getComments().add(comment)
         commentRepository.save(comment);
 
         return CommentDto.toDto(comment);
@@ -41,19 +42,28 @@ public class CommentService {
     // 전체 댓글 조회
     public List<CommentDto> getComments(Peed peed) {
         List<Comment> comments = commentRepository.findAllByPeed(peed);
-        List<CommentDto> commentDtos = new ArrayList<>();
+//        List<CommentDto> commentDtos = new ArrayList<>();
 
-        comments.forEach(s -> commentDtos.add(CommentDto.toDto(s)));
-        return commentDtos;
+//        comments.forEach(s -> commentDtos.add(CommentDto.toDto(s)));
+
+
+        return comments.stream().map(CommentDto::toDto).collect(Collectors.toList());
+//        return commentDtos;
     }
 
     // 특정 댓글 조회
     public  CommentDto getComment(Long id){
-        Comment comment = commentRepository.findById(id).orElseThrow(()-> {
-            return new IllegalArgumentException("댓글 Id를 찾을 수 없습니다.");
-        });
-        CommentDto commentDto = CommentDto.toDto(comment);
-        return commentDto;
+        //TODO: optional 제대로 활용하기
+//        Comment comment = commentRepository.findById(id).orElseThrow(()-> {
+//            return new IllegalArgumentException("댓글 Id를 찾을 수 없습니다.");
+//        });
+//        CommentDto commentDto = CommentDto.toDto(comment);
+
+        return commentRepository.findById(id)
+          .map(CommentDto::toDto)
+          .orElseThrow(() -> new IllegalArgumentException("댓글 Id를 찾을 수 없습니다."));
+
+//        return commentDto;
     }
 
     //특정 댓글 수정

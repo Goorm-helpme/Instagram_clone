@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoField;
+import java.util.Objects;
 
 @Service
 @Transactional
@@ -59,6 +60,8 @@ public class ImageService {
     // MultipartFile타입의 데이터를 ImageDTO로 변환
     public ImageDTO convertToImageDTO(MultipartFile img) throws IOException {
         LocalDateTime now = LocalDateTime.now();
+
+        //TODO: 변수로 나 나열할 필요가 없음
         int year = now.getYear();
         int month = now.getMonthValue();
         int day = now.getDayOfMonth();
@@ -67,9 +70,10 @@ public class ImageService {
         int second = now.getSecond();
         int millis = now.get(ChronoField.MILLI_OF_SECOND);
 
-        String absolutePath = new File("c:\\InstagramCloneServer").getAbsoluteFile() + "\\";
+        String absolutePath = new File("c:\\InstagramCloneServer").getAbsoluteFile() + "\\"; //TODO: file server upload + get address
         String newFileName = "image" + hour + minute + second + millis;
-        String fileExtension = '.' + img.getOriginalFilename().replaceAll("^.*\\\\.(.*)$", "$1");
+        String fileExtension = '.' + Objects.requireNonNull(img.getOriginalFilename()).replaceAll("^.*\\\\.(.*)$", "$1");
+
         String path = "images\\" + year + "\\" + month + "\\" + day;
 
         File file = new File(absolutePath + path);

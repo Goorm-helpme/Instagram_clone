@@ -19,6 +19,8 @@ public class Heart {
         this.dislike = 0;
     }
 
+
+    //TODO check 라는 메서드명이 이상함.
     public void checkLike() {
         liked = liked+1;
     }

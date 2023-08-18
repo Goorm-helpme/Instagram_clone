@@ -12,12 +12,18 @@ import java.util.Map;
 @RestController
 @RequestMapping("/replies")
 public class ReplyApiController {
+
+    //TODO: field injection -> constructor injection
     @Autowired
     private ReplyService replyService;
 
+
+    //TODO: 응답은 항상 있어야 함. void method
+    //TODO: ~~~Dto 로 두기 보다는 ~~Request, ~~Response 로 명확하게 하는 것이 좋음.
     @PostMapping
-    public void createReply(@RequestBody ReplyDto replyDto) {
+    public String createReply(@RequestBody ReplyDto replyDto) {
         replyService.createReply(replyDto);
+        return "OK";
     }
 
     @GetMapping("/{parentId}")

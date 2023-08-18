@@ -17,7 +17,7 @@ public class Comment {
     @Column(name = "comment_id")
     private Long id;
 
-    @Column(name = "USERNAME")
+    @Column(name = "USERNAME") //TODO 컬럼명은 스네이크 케이스
     private String userName;
 
     @Column(name = "CONTENT")

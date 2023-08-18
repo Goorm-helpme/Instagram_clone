@@ -41,11 +41,12 @@ public class PeedService {
                 .image(imageDTO.toEntity())
                 .content(peedDTO.getContent())
                 .build();
+
         peedRepository.save(peed);
     }
 
     // 피드 데이터 수정
-    public PeedDTO modifyPeed(Long id, PeedDTO peedDTO) {
+    public Peed modifyPeed(Long id, PeedDTO peedDTO) {
         PeedDTO fixedPeed = PeedDTO.builder()
                 .id(id)
                 .userName(peedDTO.getUserName())
@@ -54,12 +55,14 @@ public class PeedService {
                 .commentList(peedDTO.getCommentList())
                 .build();
 
-        peedRepository.save(fixedPeed.toEntity());
-        return fixedPeed;
+        Peed entity = fixedPeed.toEntity();
+        peedRepository.save(entity);
+        return entity;
     }
 
     // 피드 데이터 이미지와 함께 수정
     public void modifyPeed(Long id, PeedDTO peedDTO, ImageDTO imageDTO){
+        //TODO: 바로 entity 로 객체 변환
         PeedDTO fixedPeed = PeedDTO.builder()
                 .id(id)
                 .userName(peedDTO.getUserName())
@@ -80,6 +83,8 @@ public class PeedService {
     public PeedDTO findOnePeed(Long id){
         Peed peed = peedRepository.findOnePeed(id);
 
+
+        //TODO: static factory method 활용
         if(peed.getImage() != null){
             return PeedDTO.builder()
                     .id(peed.getId())
